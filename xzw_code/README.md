@@ -1,5 +1,18 @@
 ## 谣言检测模型接口`classify.py`使用说明
 
+##### 写在前面：
+
+使用版本说明：
+
+```
+python>3.0.0
+pytorch<2.0.0 (如果需要)
+```
+
+本次实验中的模型使用了`torch`为`2.0.0`版本的，是因为下载更早的版本较为困难，但是所用代码没有超出`2.0.0`版本之前范围。
+
+---
+
 从交大云盘上下载完整目录
 
 如果是单独下载模型，需要保证模型在对应的文件目录下
@@ -17,11 +30,11 @@ CONFIG = {
 }
 ```
 
-`import classify`之后可以按照以下的代码进行调用
+在python文件中`import classify`之后可以按照以下的代码进行调用
 
 ```python
 predictor = classify.TextPredictor() # 先进行模型初始化
-……
+………………………………………
 result=predictor.classify(text)      # text为一个str类型的变量，result为0/1
 ```
 
@@ -31,7 +44,7 @@ result=predictor.classify(text)      # text为一个str类型的变量，result�
 import classify
 print("\n测试预测功能...")
 predictor = classify.TextPredictor()
-test_case = "BREAKING: New study finds face masks cause oxygen deprivation"
+test_case =  "Breaking: 5G networks confirmed to spread coronavirus"
 result = predictor.classify(test_case)
 print(result)
 ```
@@ -45,7 +58,7 @@ print(result)
 ```python
         # 这里用于详细信息的展示，可以去除注释
         # result = {
-        #     "prediction": "Rumor" if torch.argmax(probs).item() == 0 else "Non-Rumor",
+        #     "prediction": "Non-Rumor" if torch.argmax(probs).item() == 0 else "Rumor",
         #     "confidence": probs.max().item(),
         #     "class_probabilities": {
         #         "Rumor": probs[0][0].item(),
