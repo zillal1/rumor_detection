@@ -75,7 +75,7 @@ class TextPredictor:
 
         # 这里用于详细信息的展示，可以去除注释
         # result = {
-        #     "prediction": "Rumor" if torch.argmax(probs).item() == 0 else "Non-Rumor",
+        #     "prediction": "Non-Rumor" if torch.argmax(probs).item() == 0 else "Rumor",
         #     "confidence": probs.max().item(),
         #     "class_probabilities": {
         #         "Rumor": probs[0][0].item(),
@@ -88,10 +88,7 @@ class TextPredictor:
         # print(f"置信度: {result['confidence']:.2%}")
         # print(f"详细概率: {result['class_probabilities']}")
 
-        if torch.argmax(probs).item() == 0:
-            return 1
-        else:
-            return 0
+        return torch.argmax(probs).item()
 
 
 if __name__ == "__main__":
@@ -100,7 +97,7 @@ if __name__ == "__main__":
     # 预测示例
     print("\n测试预测功能...")
     predictor = TextPredictor()
-    test_case = "BREAKING: New study finds face masks cause oxygen deprivation"
+    test_case = "Breaking: 5G networks confirmed to spread coronavirus"
     result = predictor.classify(test_case)
     print(result)
 
