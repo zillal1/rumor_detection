@@ -10,7 +10,7 @@ from tqdm import tqdm
 CONFIG = {
     "max_len": 128,
     "batch_size": 16,
-    "epochs": 10,
+    "epochs": 4,
     "learning_rate": 2e-5,
     "model_save_path": "./text_rumor_detector",
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu")
