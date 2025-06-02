@@ -15,7 +15,7 @@ from sklearn.metrics import (
 from torch.utils.data import Dataset, DataLoader
 from transformers import BertTokenizer
 from tqdm import tqdm
-from ourmodel_new import EventAwareRumorDetector
+from text_and_event_model import EventAwareRumorDetector
 # 配置需与训练时一致
 CONFIG = {
     "max_len": 128,
