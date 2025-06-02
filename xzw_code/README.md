@@ -30,24 +30,57 @@ CONFIG = {
 }
 ```
 
-在python文件中`import classify`之后可以按照以下的代码进行调用
+##### 调用方式：
 
-```python
-predictor = classify.TextPredictor() # 先进行模型初始化
-………………………………………
-result=predictor.classify(text)      # text为一个str类型的变量，result为0/1
-```
+1. 如果希望直接使用查看模型效果，可以运行：
 
-调用函数的一个例子（classify和该py文件为于同一目录下）
+   ```bash
+   python classify.py
+   ```
 
-```python
-import classify
-print("\n测试预测功能...")
-predictor = classify.TextPredictor()
-test_case =  "Breaking: 5G networks confirmed to spread coronavirus"
-result = predictor.classify(test_case)
-print(result)
-```
+   随后会得到如下运行结果：
+
+   ```SHE
+   PS D:\作业\人工智能导论大作业\xzw_code> python classify.py
+   
+   测试预测功能...
+   
+   预测结果:
+   文本: Breaking: 5G networks confirmed to spread coronavirus
+   预测结论: Rumor
+   置信度: 90.51%
+   详细概率: {'Rumor': 0.9051027297973633, 'Non-Rumor': 0.09489729255437851}
+   0
+   ```
+
+   此为内置测试样例，如果希望输出其他的可以更改classify文件中的main函数部分：
+
+   ```python
+   	print("\n测试预测功能...")
+       predictor = TextPredictor()
+       test_case =  "Breaking: 5G networks confirmed to spread coronavirus"#修改此句之后运行即可
+       result = predictor.classify(test_case)
+       print(result)
+   ```
+
+2. 在python文件中`import classify`之后可以按照以下的代码进行调用
+
+   ```python
+   predictor = classify.TextPredictor() # 先进行模型初始化
+   ………………………………………
+   result=predictor.classify(text)      # text为一个str类型的变量，result为0/1
+   ```
+
+   调用函数的一个例子（classify和该py文件为于同一目录下），运行另一个python文件时就可使用模型
+
+   ```python
+   import classify
+   …………………………………………
+   predictor = classify.TextPredictor()
+   test_case =  "Breaking: 5G networks confirmed to spread coronavirus"
+   result = predictor.classify(test_case)
+   print(result)
+   ```
 
 ---
 
